@@ -1,11 +1,10 @@
 package taskExercise;
 
 import java.util.HashSet;
-import java.util.Set;
 
 public class LongestSubString {
     public static int longestSubstring(String s) {
-            Set<Character> set = new HashSet<>();
+            HashSet<Character> set = new HashSet<>();
             int left = 0;
             int ans = 0;
 //          here i tried to check char of the given string in while loop whether it's dpl or not
@@ -15,9 +14,9 @@ public class LongestSubString {
 //          i tried to move the left varible to next position after i removed one char from the set, then after the while loop execute, i will add the char
 //          from string at that index to the set, and it works with all these 3 test cases
             for (int i = 0; i < s.length(); i++) {
-                while (set.contains(s.charAt(i))) {
-                    set.remove(s.charAt(left));
-                    left++;
+                if(set.contains(s.charAt(i))){
+                        set.remove(s.charAt(left));
+                        left++;
                 }
                 set.add(s.charAt(i));
                 ans = Math.max(set.size(), ans);
